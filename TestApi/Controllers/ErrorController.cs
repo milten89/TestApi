@@ -3,26 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TestApi.Controllers
 {
-    [ApiController]
-    public class ErrorController : Controller
-    {
-        [Route("/error-development")]
-        public IActionResult HandleErrorDevelopment([FromServices] IHostEnvironment hostEnvironment)
-        {
-            if (!hostEnvironment.IsDevelopment())
-            {
-                return NotFound();
-            }
+    //[ApiController]
+    //public class ErrorController : Controller
+    //{
+    //    [Route("/error-development")]
+    //    public IActionResult HandleErrorDevelopment([FromServices] IHostEnvironment hostEnvironment)
+    //    {
+    //        if (!hostEnvironment.IsDevelopment())
+    //        {
+    //            return NotFound();
+    //        }
 
-            var exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>()!;
+    //        var exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>()!;
 
-            return Problem(
-                detail: exceptionHandlerFeature.Error.StackTrace,
-                title: exceptionHandlerFeature.Error.Message);
-        }
+    //        return Problem(
+    //            detail: exceptionHandlerFeature.Error.StackTrace,
+    //            title: exceptionHandlerFeature.Error.Message);
+    //    }
 
-        [Route("/error")]
-        public IActionResult HandleError() =>
-            Problem();
-    }
+    //    [Route("/error")]
+    //    public IActionResult HandleError() =>
+    //        Problem();
+    //}
 }

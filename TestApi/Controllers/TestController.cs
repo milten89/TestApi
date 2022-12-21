@@ -10,11 +10,6 @@ namespace TestApi.Controllers
     [Route("v1/[controller]")]
     public class TestController : Controller
     {
-        public TestController()
-        {
-
-        }
-
         /// <summary>
         /// Return time
         /// </summary>
@@ -22,6 +17,7 @@ namespace TestApi.Controllers
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public ActionResult<TimeDto> GetTime()
         {
             return Ok(new TimeDto { Time = TimeOnly.FromDateTime(DateTime.Now)});
